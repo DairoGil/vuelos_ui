@@ -1,0 +1,42 @@
+table {
+    width: 80%;
+    margin-left: 10%;
+    margin-bottom: 80px;
+}
+
+.main{
+    margin-bottom: 50px;
+}
+
+.create{
+    text-align: right;
+    display: inline-block;
+}
+
+h1{
+    text-align: center;
+    display: inline-block;
+}
+
+td, th{
+    width: auto;
+    text-align: center;
+    border: 1px solid #000;
+}
+
+th {
+    background-color: #1976d2;
+    color: #fff;
+    font-size: 18px;
+    margin: 20px 0;
+}
+
+.faction{
+    display: inline;
+    margin: 0px 5px;
+}
+
+.buttons-action{
+    width: 30%;
+    border: none;
+}

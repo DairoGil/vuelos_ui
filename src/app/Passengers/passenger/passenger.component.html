@@ -1,0 +1,76 @@
+<div class="row">
+
+  <div class="col-{{column}}">
+    <div class="main">
+      <h1 class="col-md-12">{{ "passengers" | translate}}
+          <span *ngIf="vuelo!=''">
+            {{ "vuelo" | translate}}  {{vuelo}}
+          </span>
+      </h1>
+    </div>
+    <form class="buscar" *ngIf="vuelo!=''">
+      <label>{{ "idSearch" | translate}}:</label>
+      <input class="form-control" [(ngModel)]="buscarq" type="number" name="q">
+      <button class="btn btn-secondary" (click)="buscar(buscarq)"> {{ "search" | translate}}</button>
+    </form>
+    <table class="{{offset}}">
+      <tr>
+        <th>{{ "idSearch" | translate}}</th>
+        <th>{{ "name" | translate}}</th>
+        <th>{{ "birth" | translate}}</th>
+        <th>{{ "email" | translate}}</th>
+        <th>{{ "tele" | translate}}</th>
+      </tr>
+      <tr *ngFor="let passenger of passengerList">
+        <td>{{passenger.id}}</td>
+        <td>{{passenger.name}}</td>
+        <td>{{passenger.birthdate.substring(0,10)}}</td>
+        <td>{{passenger.email}}</td>
+        <td>{{passenger.telephone}}</td>
+        <td class="buttons-action" *ngIf="vuelo!=''">
+          <button class="faction btn btn-outline-warning" (click)="cargar(passenger.id)">{{ "editar" | translate}}</button>
+          <button class="faction btn btn-outline-danger" (click)="delete(passenger.id)">
+            X
+          </button>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="col-4" *ngIf="vuelo!=''">
+    <div class="card">
+      <div class="card-body">
+        <form>
+          <div class="form-group" *ngIf="newPas">
+            <label>{{ "idSearch" | translate}}: </label>
+            <input class="form-control" disabled type="text" [(ngModel)]="passenger.id" name="id">
+          </div>
+          <div class="form-group" *ngIf="!newPas">
+            <label>{{ "idSearch" | translate}}: </label>
+            <input class="form-control" type="text" [(ngModel)]="passenger.id" name="id">
+          </div>
+          <div class="form-group">
+            <label>{{ "name" | translate}}: </label>
+            <input class="form-control" type="text" [(ngModel)]="passenger.name" name="name">
+          </div>
+          <div class="form-group">
+            <label>{{ "birth" | translate}}: </label>
+            <input class="form-control" type="date" [(ngModel)]="date" name="birth">
+          </div>
+          <div class="form-group">
+            <label for="">{{ "email" | translate}}: </label>
+            <input class="form-control" type="email" [(ngModel)]="passenger.email" name="email">
+          </div>
+          <div class="form-group">
+            <label for="">{{ "tele" | translate}}: </label>
+            <input class="form-control" type="number" [(ngModel)]="passenger.telephone" name="telephone">
+          </div>
+          <button class="btn btn-success col-md-4 offset-md-1" (click)="newPassenger(passenger)">{{ "save" | translate}}</button>
+          <button class="btn btn-primary col-md-4 offset-md-2" (click)="clean()">{{ "clean" | translate}}</button>
+        </form>    
+      </div>
+    </div>
+  </div>
+</div>
+  
+  

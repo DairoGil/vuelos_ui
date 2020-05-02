@@ -1,0 +1,38 @@
+<div class="col-md-4 offset-md-4">
+    <div class="card">
+        <div class="card-body">
+            <form>
+                <div class="form-group" *ngIf="flight.numVuelo!=0">
+                    <label>{{ "codvuelo" | translate}}</label>
+                    <input type="text"  class="form-control" name="numvuelo" readonly [(ngModel)]="flight.numVuelo">
+                </div>
+                <div class="form-group">
+                    <label>{{ "codAvion" | translate}}</label>
+                    <select [(ngModel)]="flight.planecode" class="custom-select" name="planecode">
+                        <option value="0">{{ "selecvuelo" | translate}}</option>
+                        <option *ngFor="let airplane of airplanes" value="{{airplane.planecode}}">Airplane {{airplane.planecode}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>{{ "origin" | translate}}:</label>
+                    <input type="text" name="origin" [(ngModel)]="flight.origin" class="form-control" placeholder="Origen">
+                </div>
+                <div class="form-group">
+                    <label>{{ "destination" | translate}}:</label>
+                    <input type="text" name="destination" [(ngModel)]="flight.destination" class="form-control" placeholder="Destino" >
+                </div>
+                <div>
+                    <label class="col-md-6">{{ "date" | translate}}:</label>
+                    <label class="col-md-4 offset-md-1">{{ "time" | translate}}:</label>
+                </div>
+                <div class="form-group">
+                    <input style="display: inline-block; width: auto;" [(ngModel)]="date" name="date" type="date" class="form-control col-md-6" placeholder="Fecha">
+                    <input style="display: inline-block; width: auto;" [(ngModel)]="time" name="time" type="time" class="form-control col-md-4 offset-md-2" placeholder="Time">
+                </div>
+                <button class="btn btn-success col-md-4 offset-md-1" (click)="addNewFlight()">{{ "save" | translate}}</button>
+                <button class="btn btn-danger col-md-4 offset-md-2" [routerLink]="['/flights']">{{ "cancel" | translate}}</button>
+            </form>
+        </div>
+    </div>
+</div>
+

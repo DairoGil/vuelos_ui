@@ -1,0 +1,30 @@
+<div class="main">
+  <h1 class="col-md-4 offset-md-4">{{ "flight" | translate}}</h1>
+  <div class="create offset-md-1"><button class="btn btn-outline-success" [routerLink]="['/flights/add']">{{ "createflight" | translate}}</button></div>
+</div>
+  <table>
+    <tr>
+      <th>{{ "numerovuelo" | translate}}</th>
+      <th>{{ "plane" | translate}}</th>
+      <th>{{ "origin" | translate}}</th>
+      <th>{{ "destination" | translate}}</th>
+      <th>{{ "date" | translate}}</th>
+      <th>{{ "time" | translate}}</th>
+    </tr>
+    <tr *ngFor="let flight of flights">
+      <td>{{flight.numVuelo}}</td>
+      <td>{{flight.planecode}}</td>
+      <td>{{flight.origin}}</td>
+      <td>{{flight.destination}}</td>
+      <td>{{flight.dateflight.substring(0,10)}}</td>
+      <td>{{flight.dateflight.substring(11,16)}}</td>
+      <td class="buttons-action">
+        <button class="faction btn btn-outline-primary" [routerLink]="['/passenger',flight.numVuelo]">{{ "verpasajeros" | translate}}</button>
+        <button [routerLink]="['/flights/edit', flight.numVuelo]" class="faction btn btn-outline-warning">{{ "editar" | translate}}</button>
+        <button class="faction btn btn-outline-danger" (click)="delete(flight.numVuelo)">
+          X
+        </button>
+      </td>
+    </tr>
+  </table>
+
